@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="brown">#5C2C06</color>
-    <color name="cream">#F0C08A</color>
+    <color name="primary">#6200EE</color> <!-- You can change this to the desired primary color -->
+    <color name="primary_dark">#3700B3</color> <!-- Dark variant if needed -->
+    <color name="accent">#03DAC5</color> <!-- Accent color -->
+
+    <color name="dark_brown">#4F2C0A</color>
+    <color name="light_brown">#DAB892</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#1976D2</color>
 </resources>
