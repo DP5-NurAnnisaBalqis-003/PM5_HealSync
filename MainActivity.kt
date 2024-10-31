@@ -31,14 +31,25 @@ class MainActivity : AppCompatActivity() {
             val password = binding.etPassword.text.toString()
             val confirmPassword = binding.etConfirmPassword.text.toString()
 
+            // Regular expression to check for only alphanumeric characters and length constraints
+            val alphanumericRegex = "^[a-zA-Z0-9]{5,15}$".toRegex()
+
             when {
                 email.isEmpty() -> {
                     Toast.makeText(this, "Fill in your email first", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener // Stop if email is empty
                 }
+                !alphanumericRegex.matches(email) -> {
+                    Toast.makeText(this, "Username must be 5-15 letters or digits", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener // Stop if username is invalid
+                }
                 password.isEmpty() -> {
                     Toast.makeText(this, "Enter the password first", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener // Stop if password is empty
+                }
+                !alphanumericRegex.matches(password) -> {
+                    Toast.makeText(this, "Password must be 5-15 letters or digits", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener // Stop if password is invalid
                 }
             }
 
