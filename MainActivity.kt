@@ -1,47 +1,91 @@
 package com.lab5.myapplication
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import android.util.Log
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.textfield.TextInputEditText
 import com.lab5.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val sharedPrefFile = "com.lab5.myapplication.PREFERENCE_FILE_KEY"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(R.layout.activity_main)
         setContentView(binding.root)
 
-//        val emailField: TextInputEditText = findViewById(R.id.et_email)
-//        val editPassword: TextInputEditText = findViewById(R.id.et_password)
-//        val btnLogin: Button = findViewById(R.id.btn_login)
+        // Automatically show the keyboard for the username field
+        binding.etUsername.requestFocus()
+        showKeyboard(binding.etUsername)
 
-        val correctEmail = "admin@mail.com"
-        val correctPassword = "admin"
+        val sharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
 
-        binding.btnRegister.setOnClickListener{
+        binding.btnRegister.setOnClickListener {
             val email = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
+            val confirmPassword = binding.etConfirmPassword.text.toString()
 
-            if (correctEmail == email && correctPassword == password) {
-                Toast
-                    .makeText(this,"Login Successful", Toast.LENGTH_SHORT)
-                    .show()
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
-            } else {
-                Toast
-                    .makeText(this,"Username or Password is incorrect", Toast.LENGTH_SHORT)
-                    .show()
+            when {
+                email.isEmpty() -> {
+                    Toast.makeText(this, "Fill in your email first", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener // Stop if email is empty
+                }
+                password.isEmpty() -> {
+                    Toast.makeText(this, "Enter the password first", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener // Stop if password is empty
+                }
             }
+
+            Log.d("PasswordCheck", "Password: $password, ConfirmPassword: $confirmPassword")
+
+            if (password != confirmPassword) {
+                Toast.makeText(this, "Password and confirm password do not match", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener // Stop if password and confirm password are not the same
+            }
+
+            val editor = sharedPreferences.edit()
+            editor.putString("REGISTERED_EMAIL", email)
+            editor.putString("REGISTERED_PASSWORD", password)
+            editor.apply()
+
+            Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
+
+            autoLogin(email, password)
         }
+
+        binding.tvLogin.setOnClickListener {
+            // Navigate to LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun autoLogin(email: String, password: String) {
+        val sharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+
+        val savedEmail = sharedPreferences.getString("REGISTERED_EMAIL", "")
+        val savedPassword = sharedPreferences.getString("REGISTERED_PASSWORD", "")
+
+        // Check if the saved email and password match the newly registered ones
+        if (email == savedEmail && password == savedPassword) {
+            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+
+            // Navigate to HomeActivity after successful login
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        } else {
+            Toast.makeText(this, "Login Failed: Invalid credentials", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun showKeyboard(view: View) {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
     }
 }
