@@ -1,29 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="#D2B48C"
+    android:background="@drawable/rounded_background"
     android:padding="16dp"
     android:layout_marginBottom="8dp">
 
     <ImageView
         android:id="@+id/recipeImage"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="76dp"
+        android:layout_height="71dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_launcher_foreground" />
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="0dp"
+        android:layout_height="71dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/recipeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="Recipe Title"
             android:textColor="@android:color/black"
             android:textSize="18sp"
@@ -31,11 +33,13 @@
 
         <TextView
             android:id="@+id/recipeDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="272dp"
+            android:layout_height="33dp"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:text="Recipe Description"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
     </LinearLayout>
 
-</LinearLayout>
+    </LinearLayout>
