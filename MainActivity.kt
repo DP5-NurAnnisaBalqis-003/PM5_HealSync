@@ -36,19 +36,19 @@ class MainActivity : AppCompatActivity() {
 
             when {
                 email.isEmpty() -> {
-                    Toast.makeText(this, "Fill in your email first", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Masukkan Email Terlebih Dahulu", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener // Stop if email is empty
                 }
                 !alphanumericRegex.matches(email) -> {
-                    Toast.makeText(this, "Username must be 5-15 letters or digits", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Nama Pengguna Harus Terdiri Dari 5-15 Huruf atau Angka", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener // Stop if username is invalid
                 }
                 password.isEmpty() -> {
-                    Toast.makeText(this, "Enter the password first", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Masukkan Kata Sandi Terlebih Dahulu", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener // Stop if password is empty
                 }
                 !alphanumericRegex.matches(password) -> {
-                    Toast.makeText(this, "Password must be 5-15 letters or digits", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Nama Pengguna Harus Terdiri Dari 5-15 Huruf atau Angka", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener // Stop if password is invalid
                 }
             }
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("PasswordCheck", "Password: $password, ConfirmPassword: $confirmPassword")
 
             if (password != confirmPassword) {
-                Toast.makeText(this, "Password and confirm password do not match", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Kata Sandi dan Konfirmasi Kata Sandi Harus Sesuai", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener // Stop if password and confirm password are not the same
             }
 
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             editor.putString("REGISTERED_PASSWORD", password)
             editor.apply()
 
-            Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Registrasi Berhasil", Toast.LENGTH_SHORT).show()
 
             autoLogin(email, password)
         }
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
 
         // Check if the saved email and password match the newly registered ones
         if (email == savedEmail && password == savedPassword) {
-            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
 
             // Navigate to HomeActivity after successful login
             val intent = Intent(this, LoginActivity::class.java)
