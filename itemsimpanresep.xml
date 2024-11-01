@@ -3,6 +3,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:background="@drawable/roundedsearchbg"
+    android:backgroundTint="@color/cream"
     android:padding="16dp"
     android:layout_marginBottom="8dp">
 
