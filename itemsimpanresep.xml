@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/roundedsearchbg"
+    android:padding="16dp"
+    android:layout_marginBottom="8dp">
+
+    <ImageView
+        android:id="@+id/recipeImage"
+        android:layout_width="76dp"
+        android:layout_height="71dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="71dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/recipeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Recipe Title"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/jacquesfrancois_regular"/>
+
+        <TextView
+            android:id="@+id/recipeDescription"
+            android:layout_width="272dp"
+            android:layout_height="33dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="Recipe Description"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/jacquesfrancois_regular"/>
+    </LinearLayout>
+
+</LinearLayout>
