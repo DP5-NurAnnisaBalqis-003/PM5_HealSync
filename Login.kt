@@ -1,5 +1,8 @@
-package com.example.mylogin
+package com.lab5.myapplication
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -7,23 +10,32 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class Login : AppCompatActivity() {
-    private val correctUsername = "admin"
-    private val correctPassword = "1234"
+    
+    private val sharedPrefFile = "com.lab5.myapplication.PREFERENCE_FILE_KEY"
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)  // Sesuaikan dengan layout XML
+        setContentView(R.layout.activity_mylogin)
 
-        val loginButton = findViewById<Button>(R.id.loginButton) // Sesuai dengan ID tombol di XML
+        val loginButton = findViewById<Button>(R.id.btn_login)
+        val usernameInput = findViewById<EditText>(R.id.namapengguna)
+        val passwordInput = findViewById<EditText>(R.id.password)
+
+        val sharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+        val savedUsername = sharedPreferences.getString("REGISTERED_EMAIL", null)
+        val savedPassword = sharedPreferences.getString("REGISTERED_PASSWORD", null)
+
         loginButton.setOnClickListener {
-            // Ambil input dari EditText
-            val username = findViewById<EditText>(R.id.namapengguna).text.toString() // ID sesuai XML
-            val password = findViewById<EditText>(R.id.password).text.toString() // ID sesuai XML
+            val enteredUsername = usernameInput.text.toString()
+            val enteredPassword = passwordInput.text.toString()
 
-            if (username == correctUsername && password == correctPassword) {
-                // Jika username dan password benar
-                Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
-                // Lakukan sesuatu seperti navigasi ke halaman berikutnya
+            if (enteredUsername == savedUsername && enteredPassword == savedPassword) {
+                Toast.makeText(this, "Masuk berhasil", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(this, Upload1::class.java)
+                startActivity(intent)
+                finish() 
             } else {
                 Toast.makeText(this, "Nama pengguna atau kata sandi salah", Toast.LENGTH_SHORT).show()
             }
