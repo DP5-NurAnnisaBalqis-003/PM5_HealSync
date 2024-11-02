@@ -19,3 +19,13 @@ class Upload1 : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+         val btnSelanjutnya = findViewById<Button>(R.id.btnSelanjutnya)
+
+        btnSelanjutnya.setOnClickListener {
+            val intent = Intent(this, Upload2::class.java)
+            startActivity(intent)
+        }
+    }
+}
+
