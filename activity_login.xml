@@ -1,120 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/brown_light"
-    tools:context=".MainActivity">
+    android:alpha="100"
+    android:background="@drawable/background_layers"
+    tools:context=".Login">
 
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:text="Cake Mate"
+        android:textColor="@color/dark_brown"
         android:textSize="36sp"
         android:textStyle="bold"
-        android:textColor="@color/brown_dark"
-        android:padding="10dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="HardcodedText" />
-    
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/descriptionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Ciptakan Kue Lezat, Bagikan Kreasimu"
-        android:textStyle="bold"
+        android:textColor="@color/dark_brown"
         android:textSize="16sp"
-        android:textColor="@color/brown_dark"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/titleText"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText" />
 
     <ImageView
-        android:contentDescription="@null"
         android:id="@+id/cookieImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/icon_cakemate"
-        app:layout_constraintTop_toBottomOf="@id/descriptionText"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@null"
+        android:src="@drawable/cookies"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descriptionText" />
 
     <TextView
         android:id="@+id/namapenggunaLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/jacques_francois"
         android:text="Nama Pengguna"
-        android:textColor="@color/brown_dark"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cookieImage"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toBottomOf="@id/cookieImage" />
 
     <EditText
         android:id="@+id/namapengguna"
-        android:layout_width="344dp"
+        android:layout_width="345dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
-        android:hint="Masukkan Nama Pengguna"
+        android:autofillHints="username"
+        android:background="@drawable/rounded_brown_background"
         android:inputType="text"
-        android:textColorHint="@color/brown_dark"
-        android:backgroundTint="@color/brown_dark"
+        android:padding="12dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/namapenggunaLabel"
-        tools:ignore="Autofill,HardcodedText" />
+        app:layout_constraintWidth_percent="0.8"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/passwordLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/jacques_francois"
         android:text="Kata Sandi"
-        android:textColor="@color/brown_dark"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintHorizontal_bias="0.143"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/namapengguna"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toBottomOf="@id/namapengguna" />
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="344dp"
+        android:layout_width="345dp"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:hint="Masukkan Kata Sandi"
+        android:layout_marginTop="12dp"
+        android:autofillHints="password"
+        android:background="@drawable/rounded_brown_background"
         android:inputType="textPassword"
-        android:textColorHint="@color/brown_dark"
-        android:backgroundTint="@color/brown_dark"
+        android:padding="12dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordLabel"
-        tools:ignore="Autofill,HardcodedText" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/loginButton"
+    <TextView
+        android:id="@+id/tv_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Masuk"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@color/brown_dark"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@id/password"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="44dp"
+        android:fontFamily="@font/jacques_francois"
+        android:text="Belum punya akun?"
+        android:textColor="#1976D2"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toBottomOf="@id/passwordLabel" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="#4F2C0A"
+        android:fontFamily="@font/jacques_francois"
+        android:padding="12dp"
+        android:text="Masuk"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password"
+        app:layout_constraintWidth_percent="0.6" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
