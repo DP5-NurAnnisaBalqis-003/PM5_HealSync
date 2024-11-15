@@ -36,6 +36,9 @@ class UbahPassword : AppCompatActivity() {
                 newPassword.isEmpty() || confirmPassword.isEmpty() -> {
                     Toast.makeText(this, "Kata sandi baru harus diisi", Toast.LENGTH_SHORT).show()
                 }
+                newPassword == oldPassword -> {
+                    Toast.makeText(this, "Kata sandi baru tidak boleh sama dengan kata sandi lama", Toast.LENGTH_SHORT).show()
+                }
                 newPassword != confirmPassword -> {
                     Toast.makeText(this, "Kata sandi baru dan konfirmasi harus sesuai", Toast.LENGTH_SHORT).show()
                 }
