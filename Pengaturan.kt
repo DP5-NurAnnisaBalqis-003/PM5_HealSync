@@ -1,4 +1,4 @@
-package com.example.pengaturancm
+package com.example.simpanresep
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,6 +13,7 @@ class Pengaturan : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
     private lateinit var userImage: ImageView
+    private lateinit var saveButton: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +22,7 @@ class Pengaturan : AppCompatActivity() {
         drawerLayout = findViewById(R.id.drawerLayout)
         navigationView = findViewById(R.id.navigationView)
         userImage = findViewById(R.id.userImage)
+        saveButton = findViewById(R.id.saveButton)
 
         userImage.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
@@ -40,6 +42,10 @@ class Pengaturan : AppCompatActivity() {
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true
+        }
+        saveButton.setOnClickListener {
+            val intent = Intent(this, SimpanResep::class.java)
+            startActivity(intent)
         }
     }
 }
