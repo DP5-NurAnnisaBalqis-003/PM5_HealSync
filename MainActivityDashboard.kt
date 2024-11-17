@@ -1,44 +1,81 @@
-package com.example.projectuas
+package com.lab5.myapplication
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.appcompat.widget.SearchView
-import com.example.projectuas.databinding.ActivityMainDashboardBinding
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
+import android.content.Context
+import android.widget.TextView
 
-class MainActivityDashboard : AppCompatActivity() {
+class Dashboard : AppCompatActivity() {
 
-    private lateinit var recipeAdapter: RecipeAdapter
-    private lateinit var binding: ActivityMainDashboardBinding
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navigationView: NavigationView
+    private lateinit var userImage: ImageView
+    private lateinit var userIcon: ImageView
+
+    private val sharedPrefFile = "com.lab5.myapplication.PREFERENCE_FILE_KEY"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_dashboard)
 
-        binding = ActivityMainDashboardBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        drawerLayout = findViewById(R.id.drawerLayout)
+        navigationView = findViewById(R.id.navigationView)
+        userImage = findViewById(R.id.userImage)
 
-        val recipes = listOf(
-            Recipe("Jahe", "Kue jahe mengacu pada kategori luas makanan yang dipanggang, biasanya dibumbui dengan jahe, cengkeh, pala, dan kayu manis, yang diberi pemanis seperti madu, gula, atau molase.", R.drawable.jahe_image),
-            Recipe("Onde-onde Ketawa", "Kue ketawa adalah camilan khas Kota Pematangsiantar, Sumatera Utara yang berbentuk bulat dengan belahan di tengahnya sehingga terlihat seperti tersenyum atau tertawa.", R.drawable.ondeonde_image),
-            Recipe("Cokelat Mete", "Kue kering rasa cokelat diberi topping mete di atas nya.", R.drawable.cokelat_image),
-            Recipe("Almond Crispy", "Kue almond crispy adalah sejenis kue tipis dan renyah yang biasanya terbuat dari bahan utama seperti tepung, mentega, gula, putih telur, dan irisan almond.", R.drawable.almond_image),
-            Recipe("Sagu Pandan Keju", "Sagu pandan keju adalah kue kering yang terbuat dari tepung sagu dengan rasa pandan dan taburan keju.", R.drawable.sagu_image),
-            Recipe("Kacang", "Kue kacang adalah jenis kue kering yang berbahan dasar kacang tanah, tepung, gula, dan minyak atau margarin. Kue ini memiliki tekstur yang renyah dan rasa yang gurih-manis dengan aroma kacang yang khas.", R.drawable.kacang_image)
-        )
+        // Mendapatkan header dari NavigationView
+        val headerView = navigationView.getHeaderView(0)
+        userIcon = headerView.findViewById(R.id.userIcon)
 
-        recipeAdapter = RecipeAdapter(recipes)
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = recipeAdapter
+        // Ambil username dari SharedPreferences
+        val sharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+        val username = sharedPreferences.getString("REGISTERED_USERNAME", "Guest") // Ambil username
 
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
+        // Tampilkan username di nav_header
+        val usernameTextView = headerView.findViewById<TextView>(R.id.username)
+        usernameTextView.text = username // Menampilkan username yang disimpan
+
+        // Membuka drawer ketika userImage ditekan
+        userImage.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        // Mengatur navigasi item listener
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_settings -> {
+                    val intent = Intent(this, pengaturan2::class.java)
+                    startActivityForResult(intent, REQUEST_IMAGE_UPDATE)
+                }
+                R.id.nav_logout -> {
+                    val intent = Intent(this, Login::class.java)
+                    startActivity(intent)
+                    finish()
+                }
             }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
+        }
+    }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                recipeAdapter.filter.filter(newText)
-                return false
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_IMAGE_UPDATE && resultCode == RESULT_OK) {
+            val imageUriString = data?.getStringExtra("imageUri")
+            if (imageUriString != null) {
+                val imageUri = Uri.parse(imageUriString)
+                userImage.setImageURI(imageUri)
+                userIcon.setImageURI(imageUri) // Update userIcon di header
             }
-        })
+        }
+    }
+
+    companion object {
+        private const val REQUEST_IMAGE_UPDATE = 1
     }
 }
