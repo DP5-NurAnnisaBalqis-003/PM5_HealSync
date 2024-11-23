@@ -1,4 +1,4 @@
-package com.lab5.myapplication
+package com.example.cakemate
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,9 +9,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-class Login : AppCompatActivity() {
-    
-    private val sharedPrefFile = "com.lab5.myapplication.PREFERENCE_FILE_KEY"
+class LoginActivity : AppCompatActivity() {
+
+    private val sharedPrefFile = "com.example.cakemate.PREFERENCE_FILE_KEY"
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +23,7 @@ class Login : AppCompatActivity() {
         val passwordInput = findViewById<EditText>(R.id.password)
 
         val sharedPreferences = getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
-        val savedUsername = sharedPreferences.getString("REGISTERED_EMAIL", null)
+        val savedUsername = sharedPreferences.getString("REGISTERED_USERNAME", null)
         val savedPassword = sharedPreferences.getString("REGISTERED_PASSWORD", null)
 
         loginButton.setOnClickListener {
@@ -33,9 +33,9 @@ class Login : AppCompatActivity() {
             if (enteredUsername == savedUsername && enteredPassword == savedPassword) {
                 Toast.makeText(this, "Masuk berhasil", Toast.LENGTH_SHORT).show()
 
-                val intent = Intent(this, Upload1::class.java)
+                val intent = Intent(this, Dashboard::class.java)
                 startActivity(intent)
-                finish() 
+                finish()
             } else {
                 Toast.makeText(this, "Nama pengguna atau kata sandi salah", Toast.LENGTH_SHORT).show()
             }
