@@ -1,11 +1,14 @@
-package com.example.simpanresep
+package com.example.cakemate
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.ItemTouchHelper
-import com.example.simpanresep.databinding.SimpanResepBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cakemate.databinding.SimpanResepBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SimpanResep : AppCompatActivity() {
 
@@ -19,10 +22,23 @@ class SimpanResep : AppCompatActivity() {
         setContentView(binding.root)
 
         val recipes = mutableListOf(
-            ListResep("Kue Jahe", "Kue jahe mengacu pada kategori luas makanan yang dipanggang, biasanya dibumbui dengan jahe, cengkeh, pala, dan kayu manis, yang diberi pemanis seperti madu, gula, atau molase.", R.drawable.kuejahe),
-            ListResep("Coklat Mete", "Kue kering rasa coklat diberi topping mete di atas nya.", R.drawable.coklatmete),
-            ListResep("Almond Crispy", "Kue almond crispy adalah sejenis kue tipis dan renyah yang biasanya terbuat dari bahan utama seperti tepung, mentega, gula, putih telur, dan irisan almond.", R.drawable.almond),
+            ListResep("Kue Jahe", R.drawable.kuejahe),
+            ListResep("Coklat Mete", R.drawable.coklatmete),
+            ListResep("Almond Crispy", R.drawable.almondnestum),
         )
+
+        val isFromDashboard = intent.getBooleanExtra("IS_FROM_DASHBOARD", false)
+        if (isFromDashboard) {
+            Toast.makeText(this, "Arahkan dari Dashboard", Toast.LENGTH_SHORT).show()
+        }
+
+        val newRecipeTitle = intent.getStringExtra("RESEP_TITLE")
+        val newRecipeImage = intent.getIntExtra("RESEP_IMAGE", -1)
+
+        if (newRecipeTitle != null && newRecipeImage != -1) {
+            val newRecipe = ListResep(newRecipeTitle, newRecipeImage)
+            recipes.add(newRecipe)
+        }
 
         adapterSimpanResep = AdapterSimpanResep(recipes)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
@@ -41,5 +57,28 @@ class SimpanResep : AppCompatActivity() {
                 return false
             }
         })
+
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            if (bottomNavigation.selectedItemId != item.itemId) {
+                when (item.itemId) {
+                    R.id.nav_dashboard -> {
+                        startActivity(Intent(this, Dashboard::class.java))
+                        finish()
+                    }
+                    R.id.nav_menu -> {
+                        startActivity(Intent(this, MainActivityDashboard::class.java))
+                        finish()
+                    }
+                    R.id.nav_upload -> {
+                        startActivity(Intent(this, Upload1::class.java))
+                        finish()
+                    }
+                }
+            }
+            true
+        }
+
+        bottomNavigation.selectedItemId = R.id.nav_save_recipe
     }
 }
