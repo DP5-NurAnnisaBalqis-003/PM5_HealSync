@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5C2C06"
+    tools:context=".ResepSagu">
+
+    <!-- Scrollable Content Area -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background_resep"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:text="Sagu Pandan Keju"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <!-- Recipe Image -->
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="Sagu Image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sagu_image" />
+
+            <!-- Ingredients -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Bahan-bahan:\n- 500 gram tepung sagu\n- 100 gram tepung maizena\n- 150 gram gula halus\n- 2 kuning telur\n- 200 gram margarin\n- 100 ml santan kental\n- 1/2 sdt pasta pandan\n- Daun pandan untuk aroma"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <!-- Instructions -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="Langkah-langkah:\n1. Sangrai tepung sagu bersama daun pandan hingga harum, angkat dan sisihkan.\n2. Kocok margarin dan gula halus hingga lembut.\n3. Masukkan kuning telur satu per satu, kocok rata.\n4. Tambahkan tepung maizena, tepung sagu, dan santan secara bertahap sambil diaduk rata.\n5. Beri pasta pandan, aduk hingga adonan tercampur rata.\n6. Masukkan adonan ke dalam plastik segitiga yang sudah diberi spuit.\n7. Cetak adonan di atas loyang yang sudah dialasi kertas roti.\n8. Panggang dalam oven dengan suhu 150°C selama 25-30 menit hingga matang. Angkat dan dinginkan.\n9. Sajikan atau simpan dalam toples kedap udara."
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <!-- Tutorial Link -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:autoLink="web"
+                android:text="Link Tutorial\nhttps://youtu.be/OFYJ3fLMD0o?si=jVTG8Nw-ZYXirM7h"
+                android:textColor="#0000EE"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Footer with Icons -->
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#5C2C06"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

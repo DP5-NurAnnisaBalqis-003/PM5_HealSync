@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5C2C06"
+    tools:context=".ResepMete">
+
+    <!-- Scrollable Content Area -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background_resep"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:text="Cokelat Mete"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <!-- Recipe Image -->
+
+            <!-- Ingredients -->
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="Cokelat Mete Image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mete_image" />
+
+            <TextView
+                android:layout_width="344dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Bahan-bahan:\n- 200 gram cokelat batang (dark atau milk)\n- 100 gram kacang mete panggang\n- 1 sdm margarin\n- Cetakan cokelat sesuai selera"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <!-- Instructions -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="Langkah-langkah:\n1. Lelehkan cokelat batang menggunakan teknik double boiler.\n2. Tambahkan margarin ke cokelat leleh, aduk hingga rata.\n3. Masukkan kacang mete ke dalam cokelat, aduk hingga terbalut cokelat.\n4. Tuang campuran cokelat dan mete ke dalam cetakan.\n5. Dinginkan di kulkas selama 1-2 jam hingga mengeras.\n6. Keluarkan dari cetakan dan sajikan."
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <!-- Tutorial Link -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:autoLink="web"
+                android:text="Link Tutorial\nhttps://youtu.be/xKKwU4TcAGY?si=mGzBJMAcmpJAAbgX"
+                android:textColor="#0000EE"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Footer with Icons -->
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#5C2C06"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

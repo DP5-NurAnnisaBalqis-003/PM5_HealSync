@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5C2C06"
+    tools:context=".ResepJahe">
+
+    <!-- Scrollable Content Area -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background_resep"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:text="Jahe"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <!-- Recipe Image -->
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="Jahe Image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/jahe_image" />
+
+            <!-- Ingredients -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Bahan-bahan:\n- 250 gram tepung terigu\n- 125 gram gula palem\n- 125 gram mentega\n- 1 butir telur\n- 1/2 sdt baking powder\n- 1/2 sdt kayu manis bubuk\n- 1 sdt jahe bubuk\n- 1/4 sdt garam"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <!-- Instructions -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Langkah-langkah:\n1. Kocok mentega dan gula palem hingga lembut.\n2. Tambahkan telur, kocok hingga rata.\n3. Campurkan tepung, jahe bubuk, kayu manis, baking powder, dan garam.\n4. Aduk adonan hingga kalis.\n5. Bentuk adonan sesuai selera, letakkan di loyang.\n6. Panggang di oven 160°C selama 15-20 menit.\n7. Dinginkan dan sajikan."
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <!-- Tutorial Link -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:autoLink="web"
+                android:text="Link Tutorial\nhttps://youtu.be/Ztp3HLeV3ds?si=6n-L7MybbxWABUVf"
+                android:textColor="#0000EE"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Footer with Icons -->
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#5C2C06"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

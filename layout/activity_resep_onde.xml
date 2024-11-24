@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5C2C06"
+    tools:context=".ResepOnde">
+
+    <!-- Scrollable Content Area -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background_resep"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:text="Onde-Onde Ketawa"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <!-- Recipe Image -->
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="Kue Onde Image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ondeonde_image" />
+
+            <!-- Ingredients -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Bahan-bahan:\n- 300 gram tepung terigu\n- 100 gram gula halus\n- 2 butir telur\n- 50 gram margarin cair\n- 1 sdt baking powder\n- 1/4 sdt vanili\n- Air secukupnya\n- Wijen untuk taburan\n- Minyak untuk menggoreng"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <!-- Instructions -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="Langkah-langkah:\n1. Campur tepung terigu, gula halus, baking powder, dan vanili dalam wadah.\n2. Tambahkan telur dan margarin cair, uleni hingga rata.\n3. Tuang air sedikit demi sedikit hingga adonan kalis.\n4. Bentuk adonan menjadi bulatan kecil, lalu gulingkan di atas wijen.\n5. Goreng dalam minyak panas dengan api kecil hingga onde-onde merekah dan matang keemasan.\n6. Angkat, tiriskan, dan sajikan hangat."
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <!-- Tutorial Link -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:autoLink="web"
+                android:text="Link Tutorial\nhttps://youtu.be/mhb7EHfCbDU?si=0-xYsRu5jp_bY_ZO"
+                android:textColor="#0000EE"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Footer with Icons -->
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#5C2C06"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
