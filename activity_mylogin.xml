@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:alpha="100"
     android:background="@drawable/background_layers"
-    tools:context=".Login">
+    tools:context=".LoginActivity">
 
+    <!-- Title Text -->
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
@@ -21,6 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Subtitle Text -->
     <TextView
         android:id="@+id/descriptionText"
         android:layout_width="wrap_content"
@@ -34,23 +36,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleText" />
 
+    <!-- Image View -->
     <ImageView
         android:id="@+id/cookieImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@null"
-        android:src="@drawable/cookies"
+        android:src="@drawable/icon_cakemate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/descriptionText" />
 
+    <!-- Username Label -->
     <TextView
         android:id="@+id/namapenggunaLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/jacques_francois"
+        android:fontFamily="@font/jacquesfrancois_regular"
         android:text="Nama Pengguna"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -60,6 +64,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cookieImage" />
 
+    <!-- Username Input -->
     <EditText
         android:id="@+id/namapengguna"
         android:layout_width="345dp"
@@ -78,12 +83,13 @@
         app:layout_constraintWidth_percent="0.8"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <!-- Password Label -->
     <TextView
         android:id="@+id/passwordLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/jacques_francois"
+        android:fontFamily="@font/jacquesfrancois_regular"
         android:text="Kata Sandi"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -93,6 +99,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/namapengguna" />
 
+    <!-- Password Input -->
     <EditText
         android:id="@+id/password"
         android:layout_width="345dp"
@@ -108,28 +115,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordLabel"
         tools:ignore="SpeakableTextPresentCheck" />
+    <ImageView
+        android:id="@+id/iv_toggle_confirm_password"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/eyepw"
+        android:contentDescription="Toggle password visibility"
+        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintTop_toTopOf="@+id/password"
+        app:layout_constraintBottom_toBottomOf="@+id/password" />
 
     <TextView
-        android:id="@+id/tv_login"
+        android:id="@+id/registerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="44dp"
-        android:fontFamily="@font/jacques_francois"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="48dp"
+        android:fontFamily="@font/jacquesfrancois_regular"
         android:text="Belum punya akun?"
         android:textColor="#1976D2"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordLabel" />
+        app:layout_constraintTop_toBottomOf="@id/password" />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="88dp"
         android:backgroundTint="#4F2C0A"
-        android:fontFamily="@font/jacques_francois"
+        android:fontFamily="@font/jacquesfrancois_regular"
         android:padding="12dp"
         android:text="Masuk"
         android:textColor="#FFF"
@@ -138,6 +156,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/password"
         app:layout_constraintWidth_percent="0.6" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
