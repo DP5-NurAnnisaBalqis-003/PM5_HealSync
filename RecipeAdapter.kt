@@ -14,6 +14,7 @@ class RecipeAdapter(private var recipeList: List<Recipe>) :
     RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>(), Filterable {
 
     var filteredRecipeList = recipeList
+    var onItemClickListener: ((Recipe) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_recipe, parent, false)
@@ -25,11 +26,14 @@ class RecipeAdapter(private var recipeList: List<Recipe>) :
         holder.recipeTitle.text = recipe.title
         holder.recipeDescription.text = recipe.description
         holder.recipeImage.setImageResource(recipe.imageResId)
+
+        // Set click listener
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.invoke(recipe)
+        }
     }
 
-    override fun getItemCount(): Int {
-        return filteredRecipeList.size
-    }
+    override fun getItemCount(): Int = filteredRecipeList.size
 
     class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val recipeTitle: TextView = itemView.findViewById(R.id.recipeTitle)
