@@ -1,4 +1,4 @@
-package com.lab5.myapplication
+package com.example.cakemate
 
 import android.content.Intent
 import android.net.Uri
@@ -10,6 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
 class MyActivity : AppCompatActivity() {
+
     private lateinit var imgProfile: ImageView
     private lateinit var btnUbah: MaterialButton
     private var selectedImageUri: Uri? = null
@@ -18,9 +19,9 @@ class MyActivity : AppCompatActivity() {
         if (uri != null) {
             selectedImageUri = uri
             imgProfile.setImageURI(uri)
-            Toast.makeText(this, "Image selected", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Berhasil Pilih Gambar, Silahkan Tekan Tombol Ubah", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(this, "No image selected", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Tidak Ada Gambar Yang Dipilih", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -31,19 +32,22 @@ class MyActivity : AppCompatActivity() {
         imgProfile = findViewById(R.id.img_profile)
         btnUbah = findViewById(R.id.btn_ubah)
 
+        // Set up profile image change functionality
         imgProfile.setOnClickListener {
             changeProfilePicture()
         }
 
+        // Set up button to save changes
         btnUbah.setOnClickListener {
             if (selectedImageUri != null) {
+                Toast.makeText(this, "Foto Profil berhasil diubah", Toast.LENGTH_SHORT).show() // Tambahkan pemberitahuan di sini
                 val resultIntent = Intent().apply {
                     putExtra("imageUri", selectedImageUri.toString())
                 }
                 setResult(RESULT_OK, resultIntent)
                 finish()
             } else {
-                Toast.makeText(this, "Please select an image first", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Pilih Gambar Terlebih Dahulu", Toast.LENGTH_SHORT).show()
             }
         }
     }
