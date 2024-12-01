@@ -8,12 +8,29 @@
     android:background="@drawable/background_layers"
     tools:context=".MyActivity">
 
+    <!-- Back Button -->
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="51dp"
+        android:layout_height="36dp"
+        android:layout_margin="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:contentDescription="Back Button"
+        android:focusable="true"
+        android:src="@drawable/arrowback"
+        android:tint="#5C2C06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Judul Aplikasi -->
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:fontFamily="@font/jacques_francois"
+        android:fontFamily="@font/jacquesfrancois_regular"
         android:text="Dapur Rasa"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -22,12 +39,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Subjudul Aplikasi -->
     <TextView
         android:id="@+id/tv_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/jacques_francois"
+        android:fontFamily="@font/jacquesfrancois_regular"
         android:text="CITA RASA KHAS INDONESIA"
         android:textColor="@color/black"
         android:textSize="14sp"
@@ -35,6 +53,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
+    <!-- Gambar Profil Bulat -->
     <ImageView
         android:id="@+id/img_profile"
         android:layout_width="230dp"
@@ -50,7 +69,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_subtitle" />
-    
+
+    <!-- Tombol Tambah Gambar di Atas Profil -->
     <ImageView
         android:id="@+id/img_add"
         android:layout_width="66dp"
@@ -61,15 +81,16 @@
         app:layout_constraintEnd_toEndOf="@id/img_profile"
         app:layout_constraintTop_toTopOf="@id/img_profile" />
 
+    <!-- Tombol Ubah Profil -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_ubah"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#4F2C0A"
-        android:fontFamily="@font/jacques_francois"
+        android:backgroundTint="@color/dark_brown"
+        android:fontFamily="@font/jacquesfrancois_regular"
         android:text="Ubah"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
